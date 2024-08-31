@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silconi Production web complex</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        header {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        #search-bar {
+            padding: 10px;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .header-buttons a {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #007bff;
+        }
+        .header-buttons a:hover {
+            background: #0056b3;
+            border: 1px solid #0056b3;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .model-card {
+            background: #1e1e1e;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+        }
+        .model-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .model-card a {
+            display: inline-block;
+            margin-top: 10px;
+            background: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid #28a745;
+        }
+        .model-card a:hover {
+            background: #218838;
+            border: 1px solid #218838;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .model-card {
+                width: 100%;
+                max-width: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .container {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .model-card {
+                width: calc(33.33% - 20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <input type="text" id="search-bar" placeholder="Search for site..." onkeyup="searchModels()">
+            <div class="header-buttons">
+                <a href="https://youtube.com/@silconiproductions-op2cx?si=WYEQfEkDKZORjqab" target="_blank"></a>
+                <a href="https://discord.com/invite/WGpZ6DXAnM" target="_blank"></a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Public sites-->
+    <div class="container" id="models-container">
+        <!-- Repeat this block for each model -->
+        <div class="model-card">
+            <h3>Love To Amber from Mally</h3>
+            <img src="Public_sites/MallyloveAmber/Amber_thumbnail.png" alt="Model Thumbnail">
+            <a href="Public_sites/MallyloveAmber/massage page.html">View Site</a>
+        </div>
+        
+        <div class="model-card">
+            <h3>Love To Monia From Harry</h3>
+            <img src="Public_sites/Harry Loves Monia/Monia_thumbnail.png" alt="Model Thumbnail">
+            <a href="Public_sites/Harry Loves Monia/massage page.html">View Site</a>
+        </div>
+
+        <div class="model-card">
+            <h3>Blank site</h3>
+            <img src="Mimodels/Table/Table1.png" alt="No Model Thumbnail">
+            <a href="Mimodels/Table/Table.html">No site Linked :(</a>
+        </div>
+        
+           <div class="model-card">
+            <h3>Blank site</h3>
+            <img src="Mimodels/Table/Table1.png" alt="No Model Thumbnail">
+            <a href="Mimodels/Table/Table.html">No site Linked :(</a>
+        </div>
+        
+       
+        
+    </div>
+
+    <script>
+        function normalizeText(text) {
+            return text.trim().replace(/\s+/g, ' ').toLowerCase();
+        }
+
+        function searchModels() {
+            const input = document.getElementById('search-bar');
+            const filter = normalizeText(input.value);
+            const modelsContainer = document.getElementById('models-container');
+            const modelCards = modelsContainer.getElementsByClassName('model-card');
+
+            for (let i = 0; i < modelCards.length; i++) {
+                const modelName = modelCards[i].getElementsByTagName('h3')[0];
+                if (modelName) {
+                    const txtValue = normalizeText(modelName.textContent || modelName.innerText);
+                    if (txtValue.indexOf(filter) > -1) {
+                        modelCards[i].style.display = "";
+                    } else {
+                        modelCards[i].style.display = "none";
+                    }
+                }       
+            }
+        }
+    </script>
+</body>
+</html>
